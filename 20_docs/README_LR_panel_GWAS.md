@@ -23,10 +23,10 @@ Put GEMMA outputs from above, including geno, pheno(s), covariate into `03_resul
 cd 03_results
 
 # Calculate kinship based on prepared GEMMA files
-gemma -g gwas_geno.txt -p gwas_pheno.txt -gk -maf 0.05 -o gwas_all_fam
+gemma -g gwas_geno.txt -p gwas_pheno_survival_state.txt -gk -maf 0.05 -o gwas_all_fam
 
 # Calculate GWAS association values
-gemma -g gwas_geno.txt -p gwas_pheno.txt -k output/gwas_all_fam.cXX.txt -n 1 -c gwas_covar.txt  -maf 0.05 -lmm 4 -o gwas_all_fam_covar
+gemma -g gwas_geno.txt -p gwas_pheno_survival_state.txt -k output/gwas_all_fam.cXX.txt -n 1 -c gwas_covar.txt  -maf 0.05 -lmm 4 -o gwas_all_fam_covar
 ```
 
 ### 04. Plot results ###
