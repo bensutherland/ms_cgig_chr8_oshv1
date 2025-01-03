@@ -14,16 +14,10 @@
 
 # Source simple_pop_stats_start.R ( https://github.com/bensutherland/simple_pop_stats )
 
-# Load additional libraries to those loaded in simple_pop_stats
-#devtools::install_github('kaustubhad/fastman',build_vignettes = TRUE)
-library(fastman)
-#install.packages("missMethods")
-library(missMethods)
-
 ## User set variables
 # Filenames
 phenos.FN  <- "00_archive/G0923-21-VIUN_SampleInventory_V2_recd_2024-08-16.txt"
-vcf.FN     <- "02_input_data/mpileup_calls_noindel5_miss0.2_SNP_q0_avgDP10_biallele_minDP4_maxDP100000_miss0.2_offspring_only_rename.vcf" # de novo calls
+vcf.FN     <- "02_input_data/mpileup_calls_noindel5_miss0.15_SNP_q99_avgDP10_biallele_minDP10_maxDP10000_minGQ20_miss0.15_MAF0.05_offspring_only_rename.vcf" # de novo calls
 #vcf.FN     <- "02_input_data/all_sample_renamed_snplift_rehead_hotspot.vcf" # hotspot calls
 
 # Variables
@@ -138,7 +132,7 @@ missing_data.df$mort_shape[grep(pattern = "S", x = missing_data.df$survival_stat
 
 ##### 04.b. Plot missing data #####
 # Plot missing data by individual, colour by family
-pdf(file = "03_results/geno_rate_by_ind.pdf", width = 9, height = 5)
+pdf(file = "03_results/geno_rate_by_ind.pdf", width = 8, height = 3.7)
 plot(100 * (1 - missing_data.df$ind.per.missing), ylab = "Genotyping rate (%)"
      , col = as.factor(missing_data.df$family)
      , las = 1
@@ -181,7 +175,7 @@ percent_missing_by_locus(df = obj)
 head(missing_data_loci.df)
 
 ##### 05.b. Plot missing data #####
-pdf(file = "03_results/geno_rate_by_marker.pdf", width = 9, height = 5)
+pdf(file = "03_results/geno_rate_by_marker.pdf", width = 8, height = 3.7)
 hist((missing_data_loci.df$perc.missing * 100), breaks = 20
      , las = 1
      , xlab = "Per locus missing (%)"
@@ -249,8 +243,8 @@ pc1_v_pc2_annot.plot <- pc1_v_pc2.plot
 # Remove legend pc1 v pc2
 pc1_v_pc2_annot.plot  <- pc1_v_pc2_annot.plot + theme(legend.position = "none")
 pc1_v_pc2_annot.plot  <- pc1_v_pc2_annot.plot + annotation_custom(ggplotGrob(eig.plot)
-                                                      , xmin = -9, xmax = -6
-                                                      , ymin = -7, ymax = -1
+                                                      , xmin = -7, xmax = -4
+                                                      , ymin = -6, ymax = -1
 )
 
 # Legend inside panel second plot
