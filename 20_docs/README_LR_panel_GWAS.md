@@ -32,5 +32,9 @@ gemma -g gwas_geno.txt -p gwas_pheno_survival_state.txt -k output/gwas_all_fam.c
 ### 04. Plot results ###
 Produce Manhattan plots from the GEMMA output by setting the filename and interactively running `01_scripts/chr8_oshv1_amp_03_gemma_results.R`.    
 
+Once this is completed, rename the `03_results` folder with an informative name to preserve it.     
+Then use git checkout to bring back the original via:     
+`git checkout 03_results/.gitignore`
+
 [Back to main README](https://github.com/bensutherland/ms_cgig_chr8)
 
