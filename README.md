@@ -1,7 +1,9 @@
 # ms_cgig_chr8_oshv1
 Repository to accompany OsHV-1 analyses of CHR8 data, including imputation.      
 
-This work supports the following preprint: (uploading currently)    
+This work supports the following preprint:      
+Sutherland et al. (2025) Pedigree-based genome-wide imputation using a low-density amplicon panel for the highly polymorphic Pacific oyster *Crassostrea (Magallana) gigas*. bioRxiv [2025.02.11.637717](https://doi.org/10.1101/2025.02.11.637717).        
+
 
 Sections:     
 - [1. wgrs of OsHV-1 exposure survivors (CHR8 families)](#01-wgrs-of-oshv-1-exposure)    

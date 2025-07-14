@@ -1,4 +1,5 @@
 *~
+*.txt
 .Rhistory
 .DS_Store
 
