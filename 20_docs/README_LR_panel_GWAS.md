@@ -36,5 +36,8 @@ Once this is completed, rename the `03_results` folder with an informative name 
 Then use git checkout to bring back the original via:     
 `git checkout 03_results/.gitignore`
 
+
+Note: use `01_scripts/plot_fastman_results_in_multipanel.R` to plot multiple Manhattan plots into a multipanel figure.    
+
 [Back to main README](https://github.com/bensutherland/ms_cgig_chr8)
 
