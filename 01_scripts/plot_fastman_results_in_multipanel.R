@@ -46,6 +46,7 @@ gemma_gwas_fi3 <- gemma_gwas
 rm(gemma_gwas)
 
 # Read in the SNPs to highlight (single column with marker name, e.g., 'chr__position')
+highlight_snps.FN <- "../impute_workflow_v.0.8_AF/07_GWAS/denovo_snp_ids.txt" # need to reassign, as this was written over by loading previous data
 highlight_snps.df <- read.delim(file = highlight_snps.FN, header = F, sep = "\t")
 head(highlight_snps.df)
 
@@ -59,6 +60,74 @@ length(highlight_ai2.vec)
 
 highlight_fi3.vec <- highlight.vec[highlight.vec %in% gemma_gwas_fi3$rs]
 length(highlight_fi3.vec)
+
+
+#### 02. Plot individual Manhattan plots ####
+# denovo panel
+pdf(file = "03_results/Manhattan_plot_denovo_panel.pdf", width = 9.5, 4)
+par(mar = c(5,6,2,2) +0.1, mgp = c(3,1,0))
+fastman(m = gemma_gwas_denovo_panel
+        , chr = "chr", bp = "pos", p = "p_wald", snp = "rs"
+        , genomewideline = -log10(0.05/nrow(gemma_gwas_denovo_panel))
+        , suggestiveline = NULL
+        , cex = 0.7, cex.lab = 1, cex.axis = 1
+        #, ylim = c(0,10)
+        , col = "Set2"
+        , annotateHighlight = F
+        , annotationAngle = 55
+        , annotationCol = "black"
+        , maxP = plot_maxP
+        #, annotatePval = -log10(0.05/nrow(gemma_gwas_denovo_panel))
+        #, annotateTop = T
+        
+        
+)
+dev.off()
+
+# ai2
+pdf(file = "03_results/Manhattan_plot_ai2.pdf", width = 9.5, 4)
+par(mar = c(5,6,2,2) +0.1, mgp = c(3,1,0))
+
+fastman(m = gemma_gwas_ai2
+        , chr = "chr", bp = "pos", p = "p_wald", snp = "rs"
+        , genomewideline = -log10(0.05/nrow(gemma_gwas_ai2))
+        , suggestiveline = NULL
+        , cex = 0.7, cex.lab = 1, cex.axis = 1
+        #, ylim = c(0,10)
+        , col = "Set2"
+        , annotateHighlight = F
+        , annotationAngle = 55
+        , annotationCol = "black"
+        , highlight = highlight_ai2.vec
+        , maxP = plot_maxP
+        # , annotatePval = 0.05/nrow(gemma_gwas_ai2)
+        # , annotateTop = T
+        
+)
+dev.off()
+
+
+# fi3
+pdf(file = "03_results/Manhattan_plot_fi3.pdf", width = 9.5, 5)
+par(mar = c(5,6,2,2) +0.1, mgp = c(3,1,0))
+
+fastman(m = gemma_gwas_fi3
+        , chr = "chr", bp = "pos", p = "p_wald", snp = "rs"
+        , genomewideline = -log10(0.05/nrow(gemma_gwas_fi3))
+        , suggestiveline = NULL
+        , cex = 0.7, cex.lab = 1, cex.axis = 1
+        #, ylim = c(0,10)
+        , col = "Set2"
+        , annotateHighlight = F
+        , annotationAngle = 55
+        , annotationCol = "black"
+        , highlight = highlight_fi3.vec
+        , maxP = plot_maxP
+        
+)
+
+dev.off()
+
 
 
 #### 02. Plot multi-panel ####
